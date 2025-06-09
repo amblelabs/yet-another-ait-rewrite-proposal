@@ -1,0 +1,1 @@
+rootProject.name = "yet-another-ait-rewrite"
