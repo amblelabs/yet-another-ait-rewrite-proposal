@@ -1,7 +1,9 @@
 package dev.drtheo.yaar.example.run;
 
 import dev.drtheo.yaar.data.TDataRegistry;
+import dev.drtheo.yaar.event.TEvents;
 import dev.drtheo.yaar.event.TEventsRegistry;
+import dev.drtheo.yaar.example.event.ExampleResultEvent;
 import dev.drtheo.yaar.handler.THandlerRegistry;
 import dev.drtheo.yaar.Tardis;
 import dev.drtheo.yaar.example.AnotherHandler;
@@ -38,7 +40,9 @@ public class AITMod {
         Tardis tardis = new Tardis();
         tardis.attach(new StatsData("peanut"));
 
-        THandlerRegistry.handle(new SomeTardisEvent(tardis));
+        TEvents.handle(new SomeTardisEvent(tardis));
+
+        System.out.println(TEvents.handle(new ExampleResultEvent()));
     }
 
     public static void main(String[] args) {

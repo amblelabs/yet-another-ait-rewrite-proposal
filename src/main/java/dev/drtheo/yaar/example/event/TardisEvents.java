@@ -8,4 +8,8 @@ public interface TardisEvents extends TEvents {
     Holder<TardisEvents> HOLDER = new Holder<>(TardisEvents.class);
 
     void onSomething(Tardis tardis);
+
+    default ExampleResultEvent.Interaction withResult() {
+        return ExampleResultEvent.Interaction.SUCCESS;
+    }
 }

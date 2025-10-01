@@ -59,15 +59,11 @@ public class THandlerRegistry {
     }
 
     private static void buildEvents(THandler handler) {
-        for (TEvents.Holder<?> holder : TEventsRegistry.registered()) {
+        for (TEvents.BaseHolder<?> holder : TEventsRegistry.registered()) {
             if (!holder.isApplicable(handler))
                 continue;
 
             holder.subscribe(handler);
         }
-    }
-
-    public static <T extends TEvents> void handle(TEvent<T> event) {
-        event.handler().handle(event);
     }
 }

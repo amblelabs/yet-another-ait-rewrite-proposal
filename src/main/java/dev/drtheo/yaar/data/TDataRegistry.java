@@ -1,5 +1,7 @@
 package dev.drtheo.yaar.data;
 
+import mock.Identifier;
+
 import java.util.*;
 
 public class TDataRegistry {
@@ -7,6 +9,7 @@ public class TDataRegistry {
     private static boolean frozen;
 
     private static final List<TData.Holder<?>> comps = new ArrayList<>();
+    private static final Map<Identifier, TData.Holder<?>> idToHolder = new HashMap<>();
 
     public static void register(TData.Holder<?> holder) {
         if (frozen)
@@ -14,10 +17,15 @@ public class TDataRegistry {
 
         holder.index(comps.size());
         comps.add(holder);
+        idToHolder.put(holder.id(), holder);
     }
 
     public TData.Holder<?> get(int index) {
         return comps.get(index);
+    }
+
+    public static TData.Holder<?> get(Identifier id) {
+        return idToHolder.get(id);
     }
 
     public static int size() {

@@ -8,16 +8,16 @@ import java.util.Set;
 public class TEventsRegistry {
 
     private static boolean frozen;
-    private static final Set<TEvents.Holder<?>> holders = Collections.newSetFromMap(new IdentityHashMap<>());
+    private static final Set<TEvents.BaseHolder<?>> holders = Collections.newSetFromMap(new IdentityHashMap<>());
 
-    public static void register(TEvents.Holder<?> events) {
+    public static void register(TEvents.BaseHolder<?> events) {
         if (frozen)
             throw new IllegalStateException("Already frozen");
 
         holders.add(events);
     }
 
-    public static Collection<TEvents.Holder<?>> registered() {
+    public static Collection<TEvents.BaseHolder<?>> registered() {
         return holders;
     }
 

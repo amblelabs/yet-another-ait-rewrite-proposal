@@ -3,10 +3,12 @@ package dev.drtheo.yaar.example;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.drtheo.yaar.data.TData;
+import mock.Identifier;
 
 public class StatsData implements TData<StatsData> {
 
     public static final Holder<StatsData> ID = new CodecBacked<>(
+            new Identifier("ait", "stats"),
             RecordCodecBuilder.<StatsData>create(instance -> instance.group(
                     Codec.STRING.fieldOf("name").forGetter(StatsData::getName)
             ).apply(instance, StatsData::new))

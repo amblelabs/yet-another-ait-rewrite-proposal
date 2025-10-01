@@ -3,7 +3,7 @@ package dev.drtheo.yaar.example.event;
 import dev.drtheo.yaar.event.TEvent;
 import dev.drtheo.yaar.event.TEvents;
 
-public class DummyEvent implements TEvent<ExampleEvents> {
+public class DummyEvent implements TEvent.Notify<ExampleEvents> {
     @Override
     public TEvents.Holder<ExampleEvents> handler() {
         return ExampleEvents.HOLDER;
